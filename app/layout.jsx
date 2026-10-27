@@ -5,6 +5,11 @@ export const metadata = {
     title: 'Attar Shop - Business Tracker',
     description: 'Track purchases, sales, profits, partner shares and stock for your attar & perfume shop.',
 };
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+};
 export default function RootLayout({ children, }) {
     return (<html lang="en">
       <body className={`${inter.className} antialiased bg-[#030b16] text-[#f5f0e8]`}>

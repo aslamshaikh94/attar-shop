@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 export async function GET(req) {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { searchParams } = new URL(req.url);
     const from = searchParams.get('from') || '1900-01-01';
     const to = searchParams.get('to') || '2100-12-31';

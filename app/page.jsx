@@ -159,6 +159,11 @@ export default function DashboardPage() {
         { title: 'Cost of goods sold', value: currency(costOfGoodsSold), meta: 'Captured cost × quantity sold', icon: ReceiptText, iconBg: 'bg-[#c1d7ff]/10 text-[#c1d7ff]' },
         { title: 'Purchases', value: currency(totalPurchases), meta: 'Stock bought in period', icon: Package, iconBg: 'bg-[#f4a6ba]/10 text-[#f4a6ba]' },
     ];
+    if (loading) {
+        return (<Layout>
+        <div className="py-20 text-center text-[#aeb8c6]">Loading live shop data…</div>
+      </Layout>);
+    }
     return (<Layout>
       <div className="space-y-6 pb-8">
         <div className="pt-2">
@@ -170,9 +175,8 @@ export default function DashboardPage() {
         </div>
 
         {error && <p role="alert" className="rounded-xl border border-red-900/60 bg-red-950/30 px-4 py-3 text-sm text-red-300">{error}</p>}
-        {loading && <p className="text-xs text-[#8f99a9]">Loading live shop data…</p>}
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {statCards.map((stat) => {
             const Icon = stat.icon;
             return (<div key={stat.title} className="rounded-2xl border border-[#222936] bg-[#111318] p-5">
@@ -203,7 +207,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.5fr_1.5fr_0.9fr]">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-[1.5fr_1.5fr_0.9fr]">
           {partnerShares.map((partner) => (<div key={partner.id} className="rounded-2xl border border-[#222936] bg-[#15161f] p-4">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
@@ -240,7 +244,7 @@ export default function DashboardPage() {
         </div>
 
         <div className="space-y-5">
-          <div className="grid grid-cols-1 gap-5 xl:grid-cols-[2.2fr_0.9fr]">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-[2.2fr_0.9fr]">
             <div className="rounded-2xl border border-[#222936] bg-[#111318] p-5">
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-xl text-[#f2efe9]">Sales &amp; profit trend</h2>
@@ -279,7 +283,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.2fr_1.2fr_1fr]">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-[1.2fr_1.2fr_1fr]">
             <div className="rounded-2xl border border-[#222936] bg-[#111318] p-4">
               <h2 className="mb-4 text-xl text-[#f2efe9]">Best sellers</h2>
               <div className="space-y-3">

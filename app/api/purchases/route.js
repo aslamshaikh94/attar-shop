@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 export async function GET() {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data: purchases, error: e2 } = await supabase
         .from('purchases')
         .select('*, products(name, unit)')
@@ -13,7 +13,7 @@ export async function GET() {
     return NextResponse.json(purchases);
 }
 export async function POST(req) {
-    const supabase = createClient();
+    const supabase = await createClient();
     const body = await req.json();
     const { data, error } = await supabase.rpc('record_purchase_with_details', {
         p_product_id: body.product_id,
@@ -34,7 +34,7 @@ export async function DELETE(req) {
     if (!Number.isSafeInteger(purchaseId) || purchaseId <= 0) {
         return NextResponse.json({ error: 'A valid purchase id is required' }, { status: 400 });
     }
-    const supabase = createClient();
+    const supabase = await createClient();
     const { error } = await supabase.rpc('delete_recorded_purchase', { p_purchase_id: purchaseId });
     if (error)
         return NextResponse.json({ error: error.message }, { status: 400 });

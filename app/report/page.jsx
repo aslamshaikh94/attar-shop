@@ -25,7 +25,6 @@ export default function Report() {
     }
     useEffect(() => {
         void load();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const partners = data?.partners || [];
     const movement = data?.movement || [];
@@ -39,7 +38,7 @@ export default function Report() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="text-[11px] uppercase tracking-[0.28em] text-[#d4b063]">Reporting</div>
-            <h1 className="mt-2 text-4xl font-semibold tracking-[-0.05em] text-[#f4f0ea]">Profit Report & Partner Shares</h1>
+            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl tracking-[-0.05em] text-[#f4f0ea]">Profit Report & Partner Shares</h1>
             <p className="mt-1 text-sm text-[#aeb8c6]">View profits, partner share breakdown, and product movement.</p>
           </div>
           <PieChart className="h-8 w-8 text-[#d4b063]"/>
@@ -47,7 +46,7 @@ export default function Report() {
 
         {error && <p className="text-sm text-red-400">{error}</p>}
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           <StatCard title="Total Sales" value={formatMoney(data?.totalSales)}/>
           <StatCard title="Total Purchases" value={formatMoney(data?.totalPurchases)}/>
           <StatCard title="Expenses" value={formatMoney(data?.totalExpenses)}/>
@@ -55,12 +54,12 @@ export default function Report() {
           <StatCard title="Net Profit" value={formatMoney(data?.netProfit)}/>
         </div>
 
-        <div className="rounded-2xl border border-[#222936] bg-[#111318] p-6">
+        <div className="rounded-2xl border border-[#222936] bg-[#111318] p-4 sm:p-6">
           <h2 className="mb-4 flex items-center gap-2 font-bold text-[#f2eee7]">
             <Users className="h-5 w-5"/> Partner Share
           </h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full min-w-[640px] border-collapse text-left">
               <thead>
                 <tr className="border-b border-[#252832]">
                   <th className="pb-3 text-xs font-semibold uppercase text-[#aeb8c6]">Partner</th>
@@ -92,10 +91,10 @@ export default function Report() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-[#222936] bg-[#111318] p-6">
+        <div className="rounded-2xl border border-[#222936] bg-[#111318] p-4 sm:p-6">
           <h2 className="mb-4 font-bold text-[#f2eee7]">Product Movement</h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full min-w-[640px] border-collapse text-left">
               <thead>
                 <tr className="border-b border-[#252832]">
                   <th className="pb-3 text-xs font-semibold uppercase text-[#aeb8c6]">Product</th>

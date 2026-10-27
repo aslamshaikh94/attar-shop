@@ -74,9 +74,9 @@ export default function ExpenseDialog({ open, onClose, onSaved }) {
         return null;
     const inputClassName = 'h-12 w-full rounded-xl border border-[#2b3040] bg-[#1a1b24] px-3.5 text-base text-[#f4f0ea] outline-none transition placeholder:text-[#96939a] focus:border-[#d4b063]/70';
     const labelClassName = 'mb-2 block text-sm font-medium text-[#c9c1b6]';
-    return (<div className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto p-3 sm:p-6">
+    return (<div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto p-3 sm:items-center sm:p-6">
       <button type="button" aria-label="Close expense form" className="fixed inset-0 bg-black/65 backdrop-blur-sm" onClick={resetAndClose}/>
-      <section role="dialog" aria-modal="true" aria-labelledby="expense-dialog-title" className="relative z-10 my-auto w-full max-w-[805px] overflow-hidden rounded-[26px] border border-[#28282f] bg-[#121318] shadow-2xl">
+      <section role="dialog" aria-modal="true" aria-labelledby="expense-dialog-title" className="relative z-10 my-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-[805px] overflow-y-auto rounded-[26px] border border-[#28282f] bg-[#121318] shadow-2xl sm:max-h-[calc(100dvh-3rem)]">
         <div className="p-6 sm:p-7">
           <button type="button" aria-label="Close expense form" onClick={resetAndClose} className="absolute right-6 top-6 rounded-md p-1 text-[#d7d2ca] transition hover:bg-white/10 hover:text-white">
             <X className="h-6 w-6"/>

@@ -69,7 +69,7 @@ export default function Purchases() {
       <div className="space-y-5 pb-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-semibold tracking-[-0.05em] text-[#f4f0ea]">Purchases</h1>
+            <h1 className="text-3xl font-semibold sm:text-4xl tracking-[-0.05em] text-[#f4f0ea]">Purchases</h1>
             <p className="mt-1 text-sm text-[#aeb8c6]">
               Stock bought from distillers and suppliers. Each purchase adds to product stock.
             </p>

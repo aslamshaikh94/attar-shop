@@ -1,6 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse } from 'next/server';
-export async function middleware(request) {
+export async function proxy(request) {
     let response = NextResponse.next({ request });
     const supabase = createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
         cookies: {
@@ -14,12 +14,8 @@ export async function middleware(request) {
             },
         },
     });
-    const { data: { user }, error } = await supabase.auth.getUser();
-    if (error && !user) {
-        if (request.nextUrl.pathname.startsWith('/api/')) {
-            return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
-        }
-    }
+    const { data: { session } } = await supabase.auth.getSession();
+    const user = session?.user ?? null;
     if (!user && request.nextUrl.pathname !== '/login') {
         if (request.nextUrl.pathname.startsWith('/api/')) {
             return NextResponse.json({ error: 'Authentication required' }, { status: 401 });

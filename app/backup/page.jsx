@@ -121,7 +121,7 @@ export default function BackupPage() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="text-[11px] uppercase tracking-[0.28em] text-[#d4b063]">Data Safety</div>
-            <h1 className="mt-2 text-4xl font-semibold tracking-[-0.05em] text-[#f4f0ea]">Backup & Restore</h1>
+            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl tracking-[-0.05em] text-[#f4f0ea]">Backup & Restore</h1>
             <p className="mt-1 text-sm text-[#aeb8c6]">
               Download a JSON backup of all shop data, or restore the shop from a previously downloaded backup.
             </p>

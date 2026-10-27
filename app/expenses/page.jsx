@@ -70,7 +70,7 @@ export default function Expenses() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="text-[11px] uppercase tracking-[0.28em] text-[#d4b063]">Operations</div>
-            <h1 className="mt-2 text-4xl font-semibold tracking-[-0.05em] text-[#f4f0ea]">Expenses</h1>
+            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl tracking-[-0.05em] text-[#f4f0ea]">Expenses</h1>
             <p className="mt-1 text-sm text-[#aeb8c6]">Shop running costs, kept in their own ledger.</p>
           </div>
           <button type="button" onClick={() => setOpen(true)} className="inline-flex items-center gap-2 rounded-xl bg-[#d4b063] px-4 py-2.5 text-sm font-semibold text-[#101018] transition hover:brightness-110">
@@ -85,7 +85,7 @@ export default function Expenses() {
 
         {error && <p role="alert" className="text-sm text-red-400">{error}</p>}
 
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-[0.95fr_2fr]">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <section className="rounded-2xl border border-[#242833] bg-[#111318] p-5">
             <div className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#e07819]">Total expenses</div>
             <div className="mt-3 text-3xl font-semibold tracking-tight text-[#f3efe9]">{currency(totalExpenses)}</div>
