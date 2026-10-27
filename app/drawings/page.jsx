@@ -114,7 +114,7 @@ export default function Drawings() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="text-[11px] uppercase tracking-[0.28em] text-[#d4b063]">Partnership</div>
-            <h1 className="mt-2 text-4xl font-semibold tracking-[-0.05em] text-[#f4f0ea]">Partners&apos; profit share</h1>
+            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl tracking-[-0.05em] text-[#f4f0ea]">Partners&apos; profit share</h1>
             <p className="mt-1 text-sm text-[#aeb8c6]">
               Gross profit (sales − cost of goods) is split by share %. Expenses are kept separate.
             </p>
@@ -142,7 +142,7 @@ export default function Drawings() {
 
         {partners.length === 0 ? (<div className="rounded-2xl border border-[#242833] bg-[#111318] p-6 text-sm text-[#aeb8c6]">
             No partners have been set up yet.
-          </div>) : (<div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+          </div>) : (<div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {partnerSummaries.map((partner) => (<article key={partner.id} className="rounded-2xl border border-[#242833] bg-[#15161f] p-5">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
@@ -161,10 +161,10 @@ export default function Drawings() {
 
                 <div className="mt-5">
                   <div className="text-[10px] uppercase tracking-[0.2em] text-[#aaa69f]">Share for period</div>
-                  <div className="mt-1 text-4xl font-semibold tracking-tight text-[#f3efe9]">{currency(partner.periodShare)}</div>
+                  <div className="mt-1 text-3xl font-semibold sm:text-4xl tracking-tight text-[#f3efe9]">{currency(partner.periodShare)}</div>
                 </div>
 
-                <div className="mt-5 grid grid-cols-3 gap-2 rounded-2xl bg-[#0d0e13] p-3">
+                <div className="mt-5 grid grid-cols-1 gap-2 rounded-2xl bg-[#0d0e13] p-3 min-[420px]:grid-cols-3">
                   <div>
                     <div className="text-[9px] uppercase tracking-[0.1em] text-[#8f8d91]">Lifetime earned</div>
                     <div className="mt-1 text-sm text-[#e1dcd5]">{currency(partner.lifetimeEarned)}</div>
@@ -183,7 +183,7 @@ export default function Drawings() {
               </article>))}
           </div>)}
 
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-[0.85fr_1.75fr]">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <section className="rounded-2xl border border-[#242833] bg-[#111318] p-5">
             <h2 className="mb-4 flex items-center gap-2 text-xl text-[#f2eee7]">
               <Percent className="h-4 w-4 text-[#d4b063]"/> Share ratio
@@ -231,9 +231,9 @@ export default function Drawings() {
         </div>
       </div>
 
-      {open && (<div className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto p-4">
+      {open && (<div className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto p-3 sm:items-center sm:p-4">
           <button type="button" aria-label="Close payout form" className="fixed inset-0 bg-black/65 backdrop-blur-sm" onClick={() => setOpen(false)}/>
-          <section role="dialog" aria-modal="true" aria-labelledby="payout-dialog-title" className="relative z-10 my-auto w-full max-w-lg rounded-2xl border border-[#28282f] bg-[#121318] p-6 shadow-2xl">
+          <section role="dialog" aria-modal="true" aria-labelledby="payout-dialog-title" className="relative z-10 my-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overflow-y-auto rounded-2xl border border-[#28282f] bg-[#121318] p-4 shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:p-6">
             <button type="button" aria-label="Close payout form" onClick={() => setOpen(false)} className="absolute right-5 top-5 rounded-md p-1 text-[#d7d2ca] hover:bg-white/10">
               <X className="h-5 w-5"/>
             </button>

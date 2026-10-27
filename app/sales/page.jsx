@@ -67,21 +67,21 @@ export default function Sales() {
     }
     return (<Layout>
       <div className="space-y-5 pb-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-4xl font-semibold tracking-[-0.05em] text-[#f4f0ea]">Sales</h1>
+            <h1 className="text-3xl font-semibold sm:text-4xl tracking-[-0.05em] text-[#f4f0ea]">Sales</h1>
             <p className="mt-1 text-sm text-[#aeb8c6]">
               Every sale captures the cost price at that moment, so profit stays accurate even if prices change later.
             </p>
           </div>
-          <button type="button" onClick={() => setSaleOpen(true)} className="inline-flex items-center gap-2 rounded-xl bg-[#d4b063] px-4 py-2.5 text-sm font-semibold text-[#101018] transition hover:brightness-110">
+          <button type="button" onClick={() => setSaleOpen(true)} className="inline-flex items-center gap-2 rounded-xl bg-[#d4b063] px-3 py-2 text-sm font-semibold text-[#101018] transition hover:brightness-110 sm:px-4 sm:py-2.5">
             <ShoppingBag className="h-4 w-4"/> New sale
           </button>
         </div>
 
         {error && <p role="alert" className="text-sm text-red-400">{error}</p>}
 
-        <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { label: 'Revenue', value: currency(revenue), icon: ShoppingBag, color: 'text-[#d4b063]', iconBg: 'border-[#59471f] bg-[#211b10]' },
             { label: 'Gross profit', value: currency(grossProfit), icon: TrendingUp, color: 'text-[#20cc7a]', iconBg: 'border-[#24573d] bg-[#10231a]' },

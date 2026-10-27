@@ -126,7 +126,7 @@ export default function Products() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="text-[11px] uppercase tracking-[0.28em] text-[#d4b063]">Inventory</div>
-            <h1 className="mt-2 text-4xl font-semibold tracking-[-0.05em] text-[#f4f0ea]">Products &amp; Stock</h1>
+            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl tracking-[-0.05em] text-[#f4f0ea]">Products &amp; Stock</h1>
             <p className="mt-1 text-sm text-[#aeb8c6]">Stock goes down with every sale and up with every purchase.</p>
           </div>
           <button type="button" onClick={() => {
@@ -140,7 +140,7 @@ export default function Products() {
 
         {error && !open && <p role="alert" className="text-sm text-red-400">{error}</p>}
 
-        <div className="grid grid-cols-2 gap-4 rounded-2xl border border-[#59471f] bg-[#211b10] p-4 sm:grid-cols-4 sm:px-5">
+        <div className="grid grid-cols-1 gap-4 rounded-2xl border border-[#59471f] bg-[#211b10] p-4 sm:grid-cols-2 lg:grid-cols-4 sm:px-5">
           {[
             { label: 'Products', value: String(products.length) },
             { label: 'Stock value (cost)', value: currency(stockCost) },
@@ -152,7 +152,7 @@ export default function Products() {
             </div>))}
         </div>
 
-        <div className="flex flex-col justify-between gap-3 md:flex-row md:items-center">
+        <div className="flex flex-col justify-between gap-3 md:flex-row md:flex-wrap md:items-center">
           <div className="flex flex-wrap gap-2">
             {FILTERS.map((item) => (<button type="button" key={item} onClick={() => setFilter(item)} className={`rounded-full border px-3.5 py-1.5 text-xs transition ${filter === item
                 ? 'border-[#d4b063] bg-[#d4b063] font-semibold text-[#15120a]'
@@ -176,7 +176,7 @@ export default function Products() {
 
         {filteredProducts.length === 0 ? (<div className="rounded-2xl border border-[#222632] bg-[#111318] py-12 text-center text-sm text-[#9ca9bc]">
             {products.length === 0 ? 'No products yet. Add a product to get started.' : 'No products match your search.'}
-          </div>) : view === 'cards' ? (<div className="grid grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-3">
+          </div>) : view === 'cards' ? (<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map((product) => {
                 const stock = Number(product.stock_qty);
                 const cost = Number(product.buying_price);
@@ -303,9 +303,9 @@ export default function Products() {
           </section>)}
       </div>
 
-      {open && (<div className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto p-4">
+      {open && (<div className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto p-3 sm:items-center sm:p-4">
           <button type="button" aria-label="Close product form" className="fixed inset-0 bg-black/65 backdrop-blur-sm" onClick={() => setOpen(false)}/>
-          <section role="dialog" aria-modal="true" className="relative z-10 my-auto w-full max-w-lg rounded-2xl border border-[#28282f] bg-[#121318] p-6 shadow-2xl">
+        <section role="dialog" aria-modal="true" className="relative z-10 my-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overflow-y-auto rounded-2xl border border-[#28282f] bg-[#121318] p-4 shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:p-6">
             <h2 className="text-2xl font-semibold text-[#f4efe7]">{editing ? 'Edit product' : 'Add product'}</h2>
             <form onSubmit={save} className="mt-5 space-y-4">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -324,7 +324,7 @@ export default function Products() {
                 <label className={labelClassName}>Category / size</label>
                 <input className={inputClassName} value={form.category} onChange={(event) => setForm({ ...form, category: event.target.value })}/>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
                   <label className={labelClassName}>Buying price (₹)</label>
                   <input type="number" min="0" step="0.01" className={inputClassName} value={form.buying_price} onChange={(event) => setForm({ ...form, buying_price: event.target.value })} required/>
@@ -334,7 +334,7 @@ export default function Products() {
                   <input type="number" min="0" step="0.01" className={inputClassName} value={form.selling_price} onChange={(event) => setForm({ ...form, selling_price: event.target.value })} required/>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
                   <label className={labelClassName}>Stock quantity</label>
                   <input type="number" min="0" step="0.01" className={inputClassName} value={form.stock_qty} onChange={(event) => setForm({ ...form, stock_qty: event.target.value })} required/>
